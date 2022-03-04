@@ -59,6 +59,9 @@ void signatureClass::readFile()
 					lastBlockSize = fileSize;
 					block = fileSize;
 				}
+				while (uint64_t(readBuffer.size()) * blockSize >= maxSize) {
+					std::this_thread::sleep_for(std::chrono::milliseconds(50));
+				}
 				std::shared_ptr<char> tmpBlock(new char[block], std::default_delete<char[]>());
 				ifstream.read(tmpBlock.get(), block);
 				readBuffer.push(tmpBlock);

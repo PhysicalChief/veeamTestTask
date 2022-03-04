@@ -16,6 +16,8 @@ private:
 	unsigned int blockSize = 1024;
 	unsigned int lastBlockSize;
 
+	uint64_t maxSize = 3999 * 1024 * 1024;
+
 	std::ifstream ifstream;
 	std::ofstream ofstream;
 
